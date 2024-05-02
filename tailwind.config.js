@@ -13,6 +13,9 @@ export default {
         8: "8px",
       },
     },
+    screens: {
+      xs: "280px",
+    },
   },
   plugins: [],
 };
