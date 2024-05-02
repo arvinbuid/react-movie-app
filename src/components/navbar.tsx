@@ -9,7 +9,7 @@ export const Navbar = () => {
       <div className='w-full h-full'>
         <ul className='flex gap-6 items-center m-auto h-full max-w-[760px]'>
           {/* left */}
-          <div className='flex flex-1 gap-6'>
+          <div className='flex flex-1 gap-6 pl-6'>
             {/* Home */}
             <li>
               <Link to={"/"}>
