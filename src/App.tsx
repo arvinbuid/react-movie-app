@@ -1,7 +1,9 @@
 function App() {
   return (
     <>
-      <div>React Movie App</div>
+      <div>
+        <h1>React Movie App</h1>
+      </div>
     </>
   );
 }
