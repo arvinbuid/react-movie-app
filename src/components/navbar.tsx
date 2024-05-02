@@ -7,7 +7,7 @@ export const Navbar = () => {
   return (
     <nav className='fixed top-0 left-0 right-0 h-[54px] bg-slate-900 border-b border-slate-600 shadow-md    shadow-slate-400'>
       <div className='w-full h-full'>
-        <ul className='flex gap-6 items-center m-auto h-full max-w-[760px] pl-8'>
+        <ul className='flex gap-6 items-center m-auto h-full max-w-[760px]'>
           {/* left */}
           <div className='flex flex-1 gap-6'>
             {/* Home */}
