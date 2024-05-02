@@ -10,6 +10,7 @@ export const Navbar = () => {
         <ul className='flex gap-6 items-center m-auto h-full max-w-[760px] pl-8'>
           {/* left */}
           <div className='flex flex-1 gap-6'>
+            {/* Home */}
             <li>
               <Link to={"/"}>
                 <h2 className='text-slate-100 text-xl'>
@@ -17,6 +18,7 @@ export const Navbar = () => {
                 </h2>
               </Link>
             </li>
+            {/* Rated */}
             <li>
               <Link to={"/rated"}>
                 <h2 className='text-slate-100 text-xl'>
@@ -28,6 +30,7 @@ export const Navbar = () => {
 
           {/* right */}
           <div className='flex h-full px-6 items-center justify-center'>
+            {/* Auth */}
             <li>
               <Link to={"/auth"}>
                 <h2 className='text-slate-100 text-xl font-bold'>
