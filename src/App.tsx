@@ -1,12 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <div>
-        <h1>React Movie App</h1>
-      </div>
-    </>
+    <div className='h-screen w-screen bg-slate-900'>
+      <p className='text-center text-4xl font-semibold text-slate-100 pt-5'>React Movie App</p>
+    </div>
   );
 }
 
