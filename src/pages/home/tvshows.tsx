@@ -26,9 +26,14 @@ export const TvShows = (props: Props) => {
           {/* <img src={`https://image.tmdb.org/t/p/original/1E5baAaEse26fej7uHcjOgEE2t2.jpg`} /> */}
           <img src={`https://image.tmdb.org/t/p/original/${displayData.poster_path}`} />
           <div className='px-8 pb-5'>
-            <h1 className='text-2xl mt-4 mb-6 font-bold'>{displayData.name}</h1>
-            <p className='text-sm font-bold text-slate-400 mb-2'>{displayData.first_air_date}</p>
-            <p className='text-md text-start'>{displayData.overview}</p>
+            <h1 className='text-2xl mt-4 mb-2 font-bold'>{displayData.name}</h1>
+            <p className='text-xs font-semibold text-slate-400 mb-[3px]'>
+              First Air Date: {displayData.first_air_date}
+            </p>
+            <p className='text-xs font-semibold text-slate-400 text-start mb-5'>
+              Rating: {displayData.vote_average.toFixed(2)}
+            </p>
+            <p className='text-mds text-start'>{displayData.overview}</p>
           </div>
         </div>
       ))}
