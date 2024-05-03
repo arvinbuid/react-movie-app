@@ -5,23 +5,30 @@ import {Movies} from "./movies";
 import {TvShows} from "./tvshows";
 
 export const Home = () => {
+  // fetch movies
   const {
     data: movieData,
     isLoading: isMovieLoading,
-    error,
+    isError: isMovieError,
   } = useQuery({
     queryKey: ["movies"],
     queryFn: fetchMovies,
   });
 
-  const {data: tvShowData, isLoading: isTvShowLoading} = useQuery({
+  // fetch tvshows
+  const {
+    data: tvShowData,
+    isLoading: isTvShowLoading,
+    isError: isTvShowError,
+  } = useQuery({
     queryKey: ["tvshows"],
     queryFn: fetchTvShows,
   });
 
-  if (error) {
+  // show error if there is fetch issue
+  if (isMovieError || isTvShowError) {
     return (
-      <div className='h-[655px] flex items-center justify-center'>
+      <div className='h-[70vh] full flex items-center justify-center'>
         <h1 className='text-3xl text-red-600 font-semibold'>Something went wrong.</h1>
       </div>
     );
@@ -37,9 +44,10 @@ export const Home = () => {
           </TabsList>
         </div>
 
+        {/* Movies Component */}
         {isMovieLoading ? (
-          <div>
-            <h1>Loading...</h1>
+          <div className='h-[60vh] w-full flex items-center justify-center '>
+            <h1 className='text-slate-100 text-3xl font-semibold'>Loading...</h1>
           </div>
         ) : (
           <TabsContent value='movies'>
@@ -49,9 +57,10 @@ export const Home = () => {
           </TabsContent>
         )}
 
+        {/* TV Shows Component */}
         {isTvShowLoading ? (
-          <div>
-            <h1>Loading...</h1>
+          <div className='h-[60vh] w-full flex items-center justify-center '>
+            <h1 className='text-slate-100 text-3xl font-semibold'>Loading...</h1>
           </div>
         ) : (
           <TabsContent value='tv-shows'>
