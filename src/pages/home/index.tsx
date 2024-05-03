@@ -2,8 +2,7 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {useQuery} from "@tanstack/react-query";
 import {fetchMovies, fetchTvShows} from "./query";
 import {Movies} from "./movies";
-import { TvShows } from "./tvshows";
-// import {TvShows} from "./tvshows";
+import {TvShows} from "./tvshows";
 
 export const Home = () => {
   const {
@@ -29,7 +28,7 @@ export const Home = () => {
   }
 
   return (
-    <div className='h-auto full flex justify-center bg-slate-800 '>
+    <div className='h-auto full flex justify-center bg-slate-800'>
       <Tabs defaultValue='movies' className='pt-8'>
         <div className='w-full flex justify-center'>
           <TabsList>
