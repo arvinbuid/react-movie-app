@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 interface DisplayData {
   id: number;
   overview: string;
@@ -23,8 +25,12 @@ export const TvShows = (props: Props) => {
           key={displayData.id}
           className='gap-6 bg-slate-700 text-slate-100 pv-4 rounded-md max-w-[360px] h-auto'
         >
-          {/* <img src={`https://image.tmdb.org/t/p/original/1E5baAaEse26fej7uHcjOgEE2t2.jpg`} /> */}
-          <img src={`https://image.tmdb.org/t/p/original/${displayData.poster_path}`} />
+          <Link to={`/tvshow/${displayData.id}`}>
+            <div className='cursor-pointer'>
+              {/* <img src={`https://image.tmdb.org/t/p/original/1E5baAaEse26fej7uHcjOgEE2t2.jpg`} /> */}
+              <img src={`https://image.tmdb.org/t/p/original/${displayData.poster_path}`} />
+            </div>
+          </Link>
           <div className='px-8 pb-5'>
             <h1 className='text-2xl mt-4 mb-2 font-bold'>{displayData.name}</h1>
             <p className='text-xs font-semibold text-slate-400 mb-[3px]'>
