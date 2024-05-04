@@ -49,19 +49,22 @@ export const Movie = () => {
   });
 
   return (
-    <div className='flex justify-center bg-slate-800 h-screen'>
+    <div className='flex justify-center xs:px-0 md:px-4'>
       {isLoading || !data ? (
         <div className='h-[70vh]'>
           <h1 className='text-4xl text-center font-bold text-slate-200'>Loading...</h1>
         </div>
       ) : (
-        <div className='flex flex-row w-[780px] h-[600px] bg-slate-600 mt-4'>
-          <img
-            src={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
-            className='w-[400px] '
-          />
+        <div className='flex flex-row h-auto md:flex-row bg-slate-600 mt-4 xs:flex-col xxs:pr-0 xxs:pb-4 md:pb-0 md:pr-2 xxs:mb-4 xxs:mx-6 md:mb-0'>
+          <div className='flex justify-center xs:w-[300px] md:w-[400px]'>
+            <img
+              src={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
+              className='w-[240px] h-full xxs:hidden xs:w-full xs:block md:w-[400px] '
+            />
+          </div>
+
           <div className='pt-6 pl-4 text-slate-100 mx-2'>
-            <h1 className='text-3xl mb-6 font-bold'>{data.title}</h1>
+            <h1 className='text-md md:text-3xl mb-6 font-bold'>{data.title}</h1>
 
             <p className='text-md text-slate-200 my-1 font-semibold'>Language:</p>
             <p className='text-sm text-slate-400'>{data.original_language.toUpperCase()}</p>
