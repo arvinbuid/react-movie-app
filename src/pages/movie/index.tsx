@@ -60,38 +60,38 @@ export const Movie = () => {
             src={`https://image.tmdb.org/t/p/original/${data.poster_path}`}
             className='w-[400px] '
           />
-          <div className='pt-6 pl-4 text-slate-100 mx-2'>
-            <h1 className='text-3xl mb-6 font-bold'>{data.title}</h1>
+            <div className='pt-6 pl-4 text-slate-100 mx-2'>
+              <h1 className='text-3xl mb-6 font-bold'>{data.title}</h1>
 
-            <p className='text-md text-slate-200 my-1 font-semibold'>Language:</p>
-            <p className='text-sm text-slate-400'>{data.original_language.toUpperCase()}</p>
+              <p className='text-md text-slate-200 my-1 font-semibold'>Language:</p>
+              <p className='text-sm text-slate-400'>{data.original_language.toUpperCase()}</p>
 
-            <p className='text-md text-slate-200 mb-1 font-semibold'>Genres:</p>
-            {data.genres.map((genre) => (
-              <p key={genre.id} className='text-sm text-slate-400'>
-                {genre.name}
-              </p>
-            ))}
+              <p className='text-md text-slate-200 mb-1 font-semibold'>Genres:</p>
+              {data.genres.map((genre) => (
+                <p key={genre.id} className='text-sm text-slate-400'>
+                  {genre.name}
+                </p>
+              ))}
 
-            <p className='text-md text-slate-200 my-1 font-semibold'>Release Date:</p>
-            <p className='text-sm text-slate-400'>{data.release_date}</p>
+              <p className='text-md text-slate-200 my-1 font-semibold'>Release Date:</p>
+              <p className='text-sm text-slate-400'>{data.release_date}</p>
 
-            <p className='text-md text-slate-200 my-1 font-semibold'>Popularity:</p>
-            <p className='text-sm text-slate-400'>{data.popularity}</p>
+              <p className='text-md text-slate-200 my-1 font-semibold'>Popularity:</p>
+              <p className='text-sm text-slate-400'>{data.popularity}</p>
 
-            <p className='text-md text-slate-200 my-1 font-semibold'>Production Companies:</p>
-            {data.production_companies.map((company) => (
-              <p key={company.id} className='text-sm text-slate-400'>
-                {company.name}
-              </p>
-            ))}
+              <p className='text-md text-slate-200 my-1 font-semibold'>Production Companies:</p>
+              {data.production_companies.map((company) => (
+                <p key={company.id} className='text-sm text-slate-400'>
+                  {company.name}
+                </p>
+              ))}
 
-            <p className='text-md text-slate-200 my-1 font-semibold'>Revenue:</p>
-            <p className='text-sm text-slate-400'>{data.revenue}</p>
+              <p className='text-md text-slate-200 my-1 font-semibold'>Revenue:</p>
+              <p className='text-sm text-slate-400'>{data.revenue}</p>
 
-            <p className='text-md text-slate-200 my-1 font-semibold'>Run Time:</p>
-            <p className='text-sm text-slate-400'>{data.runtime}</p>
-          </div>
+              <p className='text-md text-slate-200 my-1 font-semibold'>Run Time:</p>
+              <p className='text-sm text-slate-400'>{data.runtime}</p>
+            </div>
 
           {/* <div className='w-full bg-slate-700 pt-5'></div> */}
         </div>
