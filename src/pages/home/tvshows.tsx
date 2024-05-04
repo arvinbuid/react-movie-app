@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {rateTvShow} from "../tvshow/mutation";
 import {Star} from "lucide-react";
 import {ChangeEvent, useState} from "react";
+import toast from "react-hot-toast";
 
 interface DisplayData {
   id: number;
@@ -23,24 +24,34 @@ export const TvShows = (props: Props) => {
   const [rating, setRating] = useState<number>(0);
   const {data} = props;
 
+  // success rating toast message
+  const onSuccess = () => {
+    toast.success("successfully rated🍻");
+  };
+
+  // unsuccessful rating toast message
+  const onError = () => {
+    toast.error("Something went wrong😔");
+  };
+
   // rate tvshow mutation
   const {mutate: rateTvShowMutation} = useMutation({
     mutationKey: ["rateTvShow"],
     mutationFn: (id: number) => rateTvShow(id, rating),
+    onSuccess,
+    onError,
   });
 
   const handleRatingChange = (e: ChangeEvent<HTMLInputElement>) => {
     setRating(Number(e.target.value));
   };
 
-  const handleSubmitRating = (e: any) => {
-    e.preventDefault();
-    // console.log(rateTvShowMutation);
-    console.log(rating);
+  const handleSubmitRating = (id: number) => {
+    rateTvShowMutation(id);
   };
 
   return (
-    <div className='grid grid-cols-3 gap-6 px-6 mb-8'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 mb-8'>
       {data.map((displayData: DisplayData) => (
         <div
           key={displayData.id}
@@ -74,7 +85,7 @@ export const TvShows = (props: Props) => {
               />
               <div className='w-[82px] bg-blue-950 h-full flex items-center justify-center cursor-pointer '>
                 <button
-                  onClick={handleSubmitRating}
+                  onClick={() => handleSubmitRating(displayData.id)}
                   className='flex items-center justify-center h-full px-2'
                 >
                   <p className='text-sm font-semibold'>Rate</p>

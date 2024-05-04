@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {Star} from "lucide-react";
 import {useMutation} from "@tanstack/react-query";
 import {rateMovie} from "../movie/mutation";
+import toast from "react-hot-toast";
 
 interface DisplayData {
   id: number;
@@ -22,10 +23,22 @@ export const Movies = (props: Props) => {
   const [rating, setRating] = useState<number>(0);
   const {data} = props;
 
+  // success rating toast message
+  const onSuccess = () => {
+    toast.success("successfully rated🍻");
+  };
+
+  // unsuccessful rating toast message
+  const onError = () => {
+    toast.error("Something went wrong😔");
+  };
+
   // rate movie mutation
   const {mutate: rateMovieMutation} = useMutation({
     mutationKey: ["rateMovie"],
     mutationFn: (id: number) => rateMovie(id, rating),
+    onSuccess,
+    onError,
   });
 
   const handleRatingChange = (e: ChangeEvent<HTMLInputElement>) => {
