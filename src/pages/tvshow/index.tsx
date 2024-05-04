@@ -92,7 +92,7 @@ export const TvShow = () => {
             ))}
 
             <p className='text-md text-slate-200 my-1 font-semibold'>Vote Average:</p>
-            <p className='text-sm text-slate-400'>{data.vote_average}</p>
+            <p className='text-sm text-slate-400'>{data.vote_average.toFixed(2)}</p>
           </div>
         </div>
       )}
