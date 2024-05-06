@@ -25,9 +25,9 @@ export const RatedMovies = (props: Props) => {
   }
 
   return (
-    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6'>
+    <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 mb-6'>
       {!data ? (
-        <div className='w-screen'>
+        <div className='w-screen pr-[50px]'>
           <h1 className='text-slate-100 text-3xl text-center'>No Rated Data.</h1>
         </div>
       ) : (
@@ -59,7 +59,7 @@ export const RatedMovies = (props: Props) => {
             {/* Your Rating */}
             {isRated && (
               <div className='flex items-center justify-center bg-blue-500 w-[140px] h-[40px] rounded-sm px-4 py-2 mb-6 ml-8'>
-                <p className='text-xs'>Your Rating: {displayData.rating}</p>
+                <p className='text-sm'>Your Rating: {displayData.rating}</p>
               </div>
             )}
           </div>

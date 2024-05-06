@@ -2,8 +2,10 @@ import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {useQuery} from "@tanstack/react-query";
 import {fetchRatedMovies} from "./query";
 import {RatedMovies} from "./ratedMovies";
+import {useState} from "react";
 
 export const Rated = () => {
+  const [displayDataType, setDisplayDataType] = useState("movies");
   // fetch rated movie
   const {
     data: ratedMoviesData,
@@ -32,17 +34,32 @@ export const Rated = () => {
     );
   }
 
+  const handleHeaderMoviesText = () => {
+    setDisplayDataType("movies");
+  };
+
+  const handleHeaderTvShowText = () => {
+    setDisplayDataType("tvshows");
+  };
+
   return (
     <div>
       <div className='w-full h-[45px] flex justify-center mt-8'>
-        <h1 className='text-4xl font-bold text-slate-100'>Your Rating</h1>
+        {/* Header text either movies or tvshow */}
+        <h1 className='text-4xl font-bold text-slate-100'>
+          Rated {displayDataType === "movies" ? "Movies" : "TV Show"}
+        </h1>
       </div>
 
       <div className='h-auto flex justify-center'>
         <Tabs defaultValue='movies' className='pt-6'>
           <TabsList>
-            <TabsTrigger value='movies'>Movies</TabsTrigger>
-            <TabsTrigger value='tvshows'>TV Shows</TabsTrigger>
+            <TabsTrigger value='movies' onClick={handleHeaderMoviesText}>
+              Movies
+            </TabsTrigger>
+            <TabsTrigger value='tvshows' onClick={handleHeaderTvShowText}>
+              TV Shows
+            </TabsTrigger>
           </TabsList>
 
           {/* rated movies */}
