@@ -13,15 +13,17 @@ interface DisplayData {
   backdrop_path: string;
   vote_average: number;
   release_date: number;
+  rating?: number;
 }
 
 interface Props {
   data: DisplayData[];
+  isRated?: boolean;
 }
 
 export const Movies = (props: Props) => {
   const [rating, setRating] = useState<number>(0);
-  const {data} = props;
+  const {data, isRated} = props;
 
   // success rating toast message
   const onSuccess = () => {
@@ -74,6 +76,13 @@ export const Movies = (props: Props) => {
             </p>
             <p className='text-mds text-start'>{displayData.overview}</p>
           </div>
+
+          {/* Rating */}
+          {isRated && (
+            <div className='bg-blue-500 w-[200px] h-[60px] rounded-md p-4'>
+              <p>Your Rating: {displayData.rating}</p>
+            </div>
+          )}
 
           {/* Rate Section */}
           <div className='flex flex-col px-8 pb-4'>

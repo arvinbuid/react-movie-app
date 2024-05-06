@@ -3,6 +3,7 @@ import {useQuery} from "@tanstack/react-query";
 import {fetchMovies, fetchTvShows} from "./query";
 import {Movies} from "./movies";
 import {TvShows} from "./tvshows";
+import {Navigate} from "react-router-dom";
 
 export const Home = () => {
   // fetch movies
@@ -32,6 +33,11 @@ export const Home = () => {
         <h1 className='text-3xl text-red-600 font-semibold'>Something went wrong.</h1>
       </div>
     );
+  }
+
+  // if guest is not logged in
+  if (localStorage.getItem("guest_session_id") === null) {
+    return <Navigate to='/auth' />;
   }
 
   return (
