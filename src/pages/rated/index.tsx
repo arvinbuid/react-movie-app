@@ -1,7 +1,7 @@
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {useQuery} from "@tanstack/react-query";
 import {fetchRatedMovies} from "./query";
-import {Movies} from "../home/movies";
+import {RatedMovies} from "./ratedMovies";
 
 export const Rated = () => {
   // fetch rated movie
@@ -33,22 +33,29 @@ export const Rated = () => {
   }
 
   return (
-    <div className='w-screen h-screen flex justify-start mt-6'>
-      <Tabs defaultValue='movies' className='w-[400px]'>
-        <TabsList>
-          <TabsTrigger value='movies'>Movies</TabsTrigger>
-          <TabsTrigger value='tvshows'>TV Shows</TabsTrigger>
-        </TabsList>
+    <div>
+      <div className='w-full h-[45px] flex justify-center mt-8'>
+        <h1 className='text-4xl font-bold text-slate-100'>Your Rating</h1>
+      </div>
 
-        {/* rated movies */}
-        <TabsContent value='movies'>
-          <div className='mt-8'>
-            <Movies data={ratedMoviesData.results} isRated />
-          </div>
-        </TabsContent>
+      <div className='h-auto flex justify-center'>
+        <Tabs defaultValue='movies' className='pt-6'>
+          <TabsList>
+            <TabsTrigger value='movies'>Movies</TabsTrigger>
+            <TabsTrigger value='tvshows'>TV Shows</TabsTrigger>
+          </TabsList>
 
-        <TabsContent value='tvshows'></TabsContent>
-      </Tabs>
+          {/* rated movies */}
+          <TabsContent value='movies'>
+            <div className='mt-8'>
+              <RatedMovies data={ratedMoviesData.results} isRated />
+            </div>
+          </TabsContent>
+
+          {/* rated tv shows */}
+          <TabsContent value='tvshows'></TabsContent>
+        </Tabs>
+      </div>
     </div>
   );
 };

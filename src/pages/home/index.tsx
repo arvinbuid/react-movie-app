@@ -41,7 +41,7 @@ export const Home = () => {
   }
 
   return (
-    <div className='h-auto full flex justify-center bg-slate-800'>
+    <div className='h-auto flex justify-center'>
       <Tabs defaultValue='movies' className='pt-8'>
         <div className='w-full flex justify-center'>
           <TabsList>
