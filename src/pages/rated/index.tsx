@@ -4,6 +4,7 @@ import {fetchRatedMovies, fetchRatedTvShows} from "./query";
 import {RatedMovies} from "./ratedMovies";
 import {useState} from "react";
 import {RatedTvShows} from "./ratedTvShows";
+import {PacmanLoader} from "react-spinners";
 
 export const Rated = () => {
   const [displayDataType, setDisplayDataType] = useState("movies");
@@ -21,27 +22,27 @@ export const Rated = () => {
   // fetch rated tvshows
   const {
     data: ratedTvShowsData,
-    isLoading: isLoadingTvShows,
-    isError: isErrorTvShows,
+    isLoading: isLoadingRatedTvShow,
+    isError: isErrorRatedTvShow,
   } = useQuery({
     queryKey: ["ratedTvShows"],
     queryFn: fetchRatedTvShows,
   });
 
   // check if rated movies is loading
-  if (isLoadingRatedMovie || isLoadingTvShows) {
+  if (isLoadingRatedMovie || isLoadingRatedTvShow) {
     return (
-      <div>
-        <h1 className='text-3xl text-slate-200 text-center font-semibold'>Loading...</h1>
+      <div className='h-[80vh] w-full flex items-center justify-center'>
+        <PacmanLoader color='#36d7b7' />
       </div>
     );
   }
 
   // check if there is an error
-  if (isErrorRatedMovie || isErrorTvShows) {
+  if (isErrorRatedMovie || isErrorRatedTvShow) {
     return (
-      <div>
-        <h1 className='text-3xl text-slate-200 text-center font-semibold'>Something went wrong.</h1>
+      <div className='h-[70vh] full flex items-center justify-center'>
+        <h1 className='text-3xl text-red-500 font-semibold'>Something went wrong.</h1>
       </div>
     );
   }

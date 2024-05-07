@@ -1,6 +1,7 @@
 import {useQuery} from "@tanstack/react-query";
 import {useParams} from "react-router-dom";
 import {fetchTvShowDetails} from "./query";
+import {PacmanLoader} from "react-spinners";
 
 interface DisplayTvShowData {
   name: string;
@@ -40,16 +41,29 @@ export const TvShow = () => {
   }
 
   // fetch individual tv show data
-  const {data, isLoading} = useQuery<DisplayTvShowData>({
+  const {
+    data,
+    isLoading: isTvShowLoading,
+    isError: isTvShowError,
+  } = useQuery<DisplayTvShowData>({
     queryKey: ["tvshow"],
     queryFn: () => fetchTvShowDetails(id),
   });
 
+  // if tv show is loading
+  if (isTvShowError) {
+    return (
+      <div className='h-[70vh] full flex items-center justify-center'>
+        <h1 className='text-3xl text-red-500 font-semibold'>Something went wrong.</h1>
+      </div>
+    );
+  }
+
   return (
     <div className='flex justify-center xs:px-0 md:px-4'>
-      {isLoading || !data ? (
-        <div className='h-[70vh]'>
-          <h1 className='text-4xl text-center font-bold text-slate-200'>Loading...</h1>
+      {isTvShowLoading || !data ? (
+        <div className='h-[80vh] w-full flex items-center justify-center'>
+          <PacmanLoader color='#36d7b7' />
         </div>
       ) : (
         <div className='flex flex-row h-auto md:flex-row bg-slate-600 mt-4 xs:flex-col xxs:pr-0 xxs:pb-4 md:pb-0 md:pr-2 xxs:mb-4 xxs:mx-6 md:mb-0'>
