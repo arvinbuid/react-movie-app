@@ -5,6 +5,7 @@ import {Home} from "./pages/home";
 import {Movie} from "./pages/movie";
 import {TvShow} from "./pages/tvshow";
 import {Rated} from "./pages/rated";
+// import {RatedMovies} from "./pages/rated/ratedMovies";
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
             <Route path='/auth' element={<Auth />}></Route>
             <Route path='/movie/:id' element={<Movie />}></Route>
             <Route path='/tvshow/:id' element={<TvShow />}></Route>
+            {/* <Route
+              path='/ratedMovies/:id'
+              element={<RatedMovies data={ratedMoviesData.results} />}
+            ></Route> */}
           </Routes>
         </div>
       </Router>

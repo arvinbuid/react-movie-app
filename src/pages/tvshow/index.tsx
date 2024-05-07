@@ -1,7 +1,8 @@
 import {useQuery} from "@tanstack/react-query";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {fetchTvShowDetails} from "./query";
 import {PacmanLoader} from "react-spinners";
+import {Button} from "@/components/ui/button";
 
 interface DisplayTvShowData {
   name: string;
@@ -110,6 +111,13 @@ export const TvShow = () => {
 
             <p className='text-md text-slate-200 my-1 font-semibold'>Vote Average:</p>
             <p className='text-sm text-slate-400'>{data.vote_average.toFixed(2)}</p>
+
+            {/* Back Button */}
+            <Link to='/'>
+              <div className='mt-2'>
+                <Button>Back</Button>
+              </div>
+            </Link>
           </div>
         </div>
       )}

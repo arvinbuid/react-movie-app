@@ -1,7 +1,8 @@
 import {useQuery} from "@tanstack/react-query";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {fetchMovieDetails} from "./query";
 import {PacmanLoader} from "react-spinners";
+import {Button} from "@/components/ui/button";
 
 interface DisplayMovieData {
   adults: boolean;
@@ -108,9 +109,17 @@ export const Movie = () => {
 
             <p className='text-md text-slate-200 my-1 font-semibold'>Run Time:</p>
             <p className='text-sm text-slate-400'>{data.runtime} Minutes</p>
+
+            {/* Back Button */}
+            <Link to='/'>
+              <div className='mt-2'>
+                <Button>Back</Button>
+              </div>
+            </Link>
           </div>
         </div>
       )}
+      {/* Back button */}
     </div>
   );
 };
