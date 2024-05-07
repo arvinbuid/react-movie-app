@@ -61,7 +61,10 @@ export const Movies = (props: Props) => {
           <Link to={`/movie/${displayData.id}`}>
             <div className='cursor-pointer'>
               {/* <img src={`https://image.tmdb.org/t/p/original/1E5baAaEse26fej7uHcjOgEE2t2.jpg`} /> */}
-              <img src={`https://image.tmdb.org/t/p/original/${displayData.poster_path}`} />
+              <img
+                src={`https://image.tmdb.org/t/p/original/${displayData.poster_path}`}
+                className='transition-all ease-in-out delay-150'
+              />
             </div>
           </Link>
 

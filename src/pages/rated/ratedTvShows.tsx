@@ -3,7 +3,7 @@ import {Link, Navigate} from "react-router-dom";
 interface DisplayData {
   id: number;
   overview: string;
-  title: string;
+  name: string;
   poster_path: string;
   backdrop_path: string;
   vote_average: number;
@@ -16,7 +16,7 @@ interface Props {
   isRated?: boolean;
 }
 
-export const RatedMovies = (props: Props) => {
+export const RatedTvShows = (props: Props) => {
   const {data, isRated} = props;
 
   // if guest is not logged in
@@ -28,7 +28,7 @@ export const RatedMovies = (props: Props) => {
     <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-6 mb-6'>
       {!data ? (
         <div className='w-screen pr-[50px]'>
-          <h1 className='text-slate-100 text-3xl text-center'>Rated Movies Unavailable.</h1>
+          <h1 className='text-slate-100 text-3xl text-center'>Rated TV Show Unavailable.</h1>
         </div>
       ) : (
         data.map((displayData: DisplayData) => (
@@ -36,8 +36,8 @@ export const RatedMovies = (props: Props) => {
             key={displayData.id}
             className='gap-6 bg-slate-700 text-slate-100 pv-4 rounded-md max-w-[360px] h-auto'
           >
-            {/* Movie Image */}
-            <Link to={`/movie/${displayData.id}`}>
+            {/* TV Show Image */}
+            <Link to={`/tvshow/${displayData.id}`}>
               <div className='cursor-pointer'>
                 {/* <img src={`https://image.tmdb.org/t/p/original/1E5baAaEse26fej7uHcjOgEE2t2.jpg`} /> */}
                 <img src={`https://image.tmdb.org/t/p/original/${displayData.poster_path}`} />
@@ -46,7 +46,7 @@ export const RatedMovies = (props: Props) => {
 
             {/* Release Date and Rating */}
             <div className='px-8 pb-5'>
-              <h1 className='text-2xl mt-4 mb-2 font-bold text-start'>{displayData.title}</h1>
+              <h1 className='text-2xl mt-4 mb-2 font-bold text-start'>{displayData.name}</h1>
               <p className='text-xs font-semibold text-slate-400 mb-[3px] text-start'>
                 Release Date: {displayData.release_date}
               </p>

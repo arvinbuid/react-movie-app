@@ -1,23 +1,35 @@
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@/components/ui/tabs";
 import {useQuery} from "@tanstack/react-query";
-import {fetchRatedMovies} from "./query";
+import {fetchRatedMovies, fetchRatedTvShows} from "./query";
 import {RatedMovies} from "./ratedMovies";
 import {useState} from "react";
+import {RatedTvShows} from "./ratedTvShows";
 
 export const Rated = () => {
   const [displayDataType, setDisplayDataType] = useState("movies");
+
   // fetch rated movie
   const {
     data: ratedMoviesData,
-    isLoading,
-    isError,
+    isLoading: isLoadingRatedMovie,
+    isError: isErrorRatedMovie,
   } = useQuery({
     queryKey: ["ratedMovies"],
     queryFn: fetchRatedMovies,
   });
 
+  // fetch rated tvshows
+  const {
+    data: ratedTvShowsData,
+    isLoading: isLoadingTvShows,
+    isError: isErrorTvShows,
+  } = useQuery({
+    queryKey: ["ratedTvShows"],
+    queryFn: fetchRatedTvShows,
+  });
+
   // check if rated movies is loading
-  if (isLoading) {
+  if (isLoadingRatedMovie || isLoadingTvShows) {
     return (
       <div>
         <h1 className='text-3xl text-slate-200 text-center font-semibold'>Loading...</h1>
@@ -26,7 +38,7 @@ export const Rated = () => {
   }
 
   // check if there is an error
-  if (isError) {
+  if (isErrorRatedMovie || isErrorTvShows) {
     return (
       <div>
         <h1 className='text-3xl text-slate-200 text-center font-semibold'>Something went wrong.</h1>
@@ -45,7 +57,7 @@ export const Rated = () => {
   return (
     <div>
       <div className='w-full h-[45px] flex justify-center mt-8'>
-        {/* Header text either movies or tvshow */}
+        {/* Header Text*/}
         <h1 className='text-4xl font-bold text-slate-100'>
           Rated {displayDataType === "movies" ? "Movies" : "TV Show"}
         </h1>
@@ -70,7 +82,11 @@ export const Rated = () => {
           </TabsContent>
 
           {/* rated tv shows */}
-          <TabsContent value='tvshows'></TabsContent>
+          <TabsContent value='tvshows'>
+            <div className='mt-8'>
+              <RatedTvShows data={ratedTvShowsData.results} isRated />
+            </div>
+          </TabsContent>
         </Tabs>
       </div>
     </div>
